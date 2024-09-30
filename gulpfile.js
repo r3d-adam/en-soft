@@ -63,6 +63,7 @@ const htmlNjk = html(data);
 gulp.task('html', htmlNjk);
 gulp.task('js', js);
 gulp.task('scss', scss);
+gulp.task('ftp', ftp);
 // gulp.task('purgecss', purgecss);
 // gulp.task('cssCopyAssets', cssCopyAssets);
 
