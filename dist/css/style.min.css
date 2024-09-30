@@ -11367,6 +11367,16 @@ form .policy-col {
   content: "✕";
 }
 
+input:autofill,
+input:-internal-autofill-selected,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 /* -------------------------------------------------------------------------- */
 /* _burger */
 .header {
