@@ -2,23 +2,38 @@
 @use 'sass:color';
 
 .btn {
-	display: inline-block;
+	display: inline-flex;
 	border-radius: 12px;
-	padding: 8px 28px 11px;
-	min-height: 48px;
 	max-height: 100%;
 	max-width: 100%;
 	background: var(--primary);
 	color: var(--on-primary);
 	text-decoration: none;
 	cursor: pointer;
-	text-align: center;
 	font-size: 16px;
 	@include font-atyp-display(semibold);
-	line-height: 23px;
 	border: none;
 	transition: background 0.3s ease;
 	letter-spacing: 0.64px;
+
+	display: inline-flex;
+	height: 48px;
+	align-items: center;
+	min-height: 48px;
+	text-align: center;
+	justify-content: center;
+	$padding-top: 4px;
+	padding: $padding-top 32px 6px;
+	line-height: 1;
+	max-width: 100%;
+
+	@include ios {
+		padding-top: 8px;
+
+		.icon {
+			margin-top: -$padding-top !important;
+		}
+	}
 
 	&:disabled {
 		opacity: 0.7;
@@ -27,6 +42,8 @@
 	&:has(.icon) {
 		display: inline-flex;
 		align-items: center;
+
+		height: 48px; /* Явная высота */
 	}
 
 	.icon {
@@ -36,9 +53,11 @@
 	}
 
 	.icon-chip {
-		height: 18px;
+		height: 19px;
 		width: 18px;
 		margin-top: 3px;
+		padding-top: 1px;
+		margin-left: 8px;
 	}
 
 	.icon-tr-arrow {
@@ -58,8 +77,9 @@
 	}
 
 	&-muted {
+		padding-left: 14px;
+		padding-right: 14px;
 		@include font-atyp-display(semibold);
-		padding: 7px 14px 11px;
 		background: rgba(157, 157, 157, 0.3);
 		border: 1px solid rgba(255, 255, 255, 0.5);
 
@@ -90,7 +110,8 @@
 	&-secondary {
 		background: var(--primary-lighter);
 		color: var(--on-primary);
-		padding: 13px 36px;
+		padding-left: 36px;
+		padding-right: 36px;
 	}
 
 	&-primary-gradient {
@@ -113,4 +134,9 @@
 			background-position: center center;
 		}
 	}
+}
+
+.btn .icon {
+	// margin: 0 0 0 10px !important;
+	display: inline-flex;
 }

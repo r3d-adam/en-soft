@@ -1,5 +1,5 @@
 {%- macro icon(props) %}
-  <svg class="icon icon-{{-props.name-}} 
+  <i class="icon icon-{{-props.name-}} 
 {% if props.mod %}
   {{- " icon-" + props.name + "--" + props.mod-}}
 {% endif -%}
@@ -10,12 +10,14 @@
   {{- " icon-stroke"-}}
 {% endif -%}
 ">
-    {%- set href = '' %}
-    {%- if props.inlineSprite == false %}
-      {%- set href = "/@img/icons/icons.svg" %}
-    {%- endif %}
-    {#- {{- 'inlineSprite: ' + props.inlineSprite | dump }} #}
-    {#- {{- 'href: ' + href | dump }} #}
-    <use xlink:href="{{-href-}}#{{- props.name -}}"></use>
-  </svg>
+    <svg>
+      {%- set href = '' %}
+      {%- if props.inlineSprite == false %}
+        {%- set href = "/@img/icons/icons.svg" %}
+      {%- endif %}
+      {#- {{- 'inlineSprite: ' + props.inlineSprite | dump }} #}
+      {#- {{- 'href: ' + href | dump }} #}
+      <use xlink:href="{{-href-}}#{{- props.name -}}"></use>
+    </svg>
+  </i>
 {%- endmacro %}

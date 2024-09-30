@@ -1,4 +1,6 @@
 @use 'variables' as *;
+@use 'global/mixins' as *;
+
 @use 'global/bootstrap' as *;
 
 /* ------------------------------ lightgallery ------------------------------ */
@@ -36,7 +38,7 @@
 	border: 1px solid #fff;
 	display: flex;
 	align-items: center;
-	height: 50px;
+	height: 48px;
 	z-index: 2;
 	border-radius: 40px;
 	padding: 2px !important;
@@ -63,6 +65,10 @@
 		margin: 0;
 		padding: 0;
 		padding-bottom: 4px;
+
+		@include ios {
+			padding-top: 6px;
+		}
 
 		&::after {
 			content: none;

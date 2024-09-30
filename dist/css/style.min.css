@@ -403,6 +403,20 @@ template {
   --border-radius-lg: 34px;
 }
 
+/* 
+$default-grid-gutter: 2%;
+
+.grid {
+  @include flexbox-grid-mixins.grid($gutter: $default-grid-gutter);
+
+  > .grid__col-3 {
+    @include flexbox-grid-mixins.grid-col($col: 3, $gutter: $default-grid-gutter);
+  }
+  > .grid__col-9 {
+    @include flexbox-grid-mixins.grid-col($col: 9, $gutter: $default-grid-gutter);
+  }
+}
+*/
 /* -------------------------------------------------------------------------- */
 /*                                    FLEX                                    */
 /* -------------------------------------------------------------------------- */
@@ -10265,7 +10279,7 @@ button.swiper-pagination-bullet {
   border: 1px solid #fff;
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 48px;
   z-index: 2;
   border-radius: 40px;
   padding: 2px !important;
@@ -10293,6 +10307,12 @@ button.swiper-pagination-bullet {
   margin: 0;
   padding: 0;
   padding-bottom: 4px;
+}
+@supports (-webkit-touch-callout: none) {
+  .swiper-nav .swiper-button-prev,
+  .swiper-nav .swiper-button-next {
+    padding-top: 6px;
+  }
 }
 .swiper-nav .swiper-button-prev::after,
 .swiper-nav .swiper-button-next::after {
@@ -10490,20 +10510,6 @@ button.swiper-pagination-bullet {
   will-change: transform;
 }
 
-/* 
-$default-grid-gutter: 2%;
-
-.grid {
-  @include flexbox-grid-mixins.grid($gutter: $default-grid-gutter);
-
-  > .grid__col-3 {
-    @include flexbox-grid-mixins.grid-col($col: 3, $gutter: $default-grid-gutter);
-  }
-  > .grid__col-9 {
-    @include flexbox-grid-mixins.grid-col($col: 9, $gutter: $default-grid-gutter);
-  }
-}
-*/
 /* здесь используйте глобальные селекторы img, body, html и так далее*/
 * {
   box-sizing: border-box;
@@ -10842,6 +10848,10 @@ label select:focus-visible,
 }
 
 .icon {
+  max-width: 100%;
+  max-height: 100%;
+}
+.icon svg {
   max-width: 100%;
   max-height: 100%;
 }
@@ -11370,6 +11380,19 @@ form .policy-col {
 .modal-primary .modal__close:before {
   content: "✕";
   display: block;
+  font-size: 16px;
+  text-align: center;
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@supports (-webkit-touch-callout: none) {
+  .modal-primary .modal__close:before {
+    padding-bottom: 2px;
+    padding-left: 1px;
+  }
 }
 
 input:autofill,
@@ -12052,24 +12075,37 @@ input:-webkit-autofill:active {
   }
 }
 .btn {
-  display: inline-block;
+  display: inline-flex;
   border-radius: 12px;
-  padding: 8px 28px 11px;
-  min-height: 48px;
   max-height: 100%;
   max-width: 100%;
   background: var(--primary);
   color: var(--on-primary);
   text-decoration: none;
   cursor: pointer;
-  text-align: center;
   font-size: 16px;
   font-family: "AtypDisplay", sans-serif;
   font-weight: 500;
-  line-height: 23px;
   border: none;
   transition: background 0.3s ease;
   letter-spacing: 0.64px;
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  min-height: 48px;
+  text-align: center;
+  justify-content: center;
+  padding: 4px 32px 6px;
+  line-height: 1;
+  max-width: 100%;
+}
+@supports (-webkit-touch-callout: none) {
+  .btn {
+    padding-top: 8px;
+  }
+  .btn .icon {
+    margin-top: -4px !important;
+  }
 }
 .btn:disabled {
   opacity: 0.7;
@@ -12077,6 +12113,7 @@ input:-webkit-autofill:active {
 .btn:has(.icon) {
   display: inline-flex;
   align-items: center;
+  height: 48px; /* Явная высота */
 }
 .btn .icon {
   max-width: 20px;
@@ -12084,9 +12121,11 @@ input:-webkit-autofill:active {
   margin-left: 9px;
 }
 .btn .icon-chip {
-  height: 18px;
+  height: 19px;
   width: 18px;
   margin-top: 3px;
+  padding-top: 1px;
+  margin-left: 8px;
 }
 .btn .icon-tr-arrow {
   width: 13px;
@@ -12101,9 +12140,10 @@ input:-webkit-autofill:active {
   color: var(--on-primary-active);
 }
 .btn-muted {
+  padding-left: 14px;
+  padding-right: 14px;
   font-family: "AtypDisplay", sans-serif;
   font-weight: 500;
-  padding: 7px 14px 11px;
   background: rgba(157, 157, 157, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -12127,7 +12167,8 @@ input:-webkit-autofill:active {
 .btn-secondary {
   background: var(--primary-lighter);
   color: var(--on-primary);
-  padding: 13px 36px;
+  padding-left: 36px;
+  padding-right: 36px;
 }
 .btn-primary-gradient {
   position: relative;
@@ -12143,6 +12184,10 @@ input:-webkit-autofill:active {
   background-size: 100% 100%;
   background-image: var(--primary-gradient-active);
   background-position: center center;
+}
+
+.btn .icon {
+  display: inline-flex;
 }
 
 /* _hero */
