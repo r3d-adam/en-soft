@@ -1,0 +1,106 @@
+@use 'variables' as *;
+@use 'global/bootstrap' as *;
+
+/* ------------------------------ lightgallery ------------------------------ */
+
+// $lg-path-fonts: '../fonts';
+// $lg-path-images: '@img';
+
+// @use '~lightgallery/scss/lightgallery-bundle' with (
+// 	$lg-path-fonts: $lg-path-fonts,
+// 	$lg-path-images: $lg-path-images
+// );
+
+/* ----------------------------------- aos ---------------------------------- */
+// @use '~aos/dist/aos.css';
+
+/* --------------------------------- swiper --------------------------------- */
+@use '~swiper/swiper-bundle';
+
+/* --------------------------------- burger --------------------------------- */
+@use '~sass-burger/burger' as *;
+@forward '~sass-burger/burger'; // чтобы использовать миксины
+
+.swiper-nav-wrap {
+	position: relative;
+	left: 0;
+	height: 0;
+	overflow: visible;
+	user-select: none;
+}
+
+.swiper-nav {
+	position: absolute;
+	bottom: 48px;
+	right: $container-padding-x / 2;
+	border: 1px solid #fff;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	z-index: 2;
+	border-radius: 40px;
+	padding: 2px !important;
+
+	@include media-breakpoint-only(xs) {
+		bottom: 96px;
+		right: $container-padding-x;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		font-size: 22px;
+		position: static;
+		border-radius: 50%;
+		/* Frame 4 */
+		width: 42px;
+		height: 42px;
+		line-height: 42px;
+		flex: 0 0 auto;
+		backdrop-filter: blur(10px);
+		background: rgba(195, 195, 195, 0.3);
+		opacity: 1;
+		color: #fff;
+		margin: 0;
+		padding: 0;
+		padding-bottom: 4px;
+
+		&::after {
+			content: none;
+		}
+
+		&.swiper-button-disabled {
+			opacity: 0.4;
+		}
+
+		&:hover {
+			background: rgba(195, 195, 195, 0.7);
+		}
+	}
+
+	.swiper-button-prev {
+		position: static;
+	}
+
+	.swiper-button-next {
+	}
+
+	.swiper-pagination {
+		position: static;
+		// margin-inline: 8px;
+		width: 48px;
+		font-size: 16px;
+		@include font-atyp-display();
+		color: rgba(255, 255, 255, 0.7);
+		padding-bottom: 2px;
+
+		.swiper-pagination-current {
+			color: #fff;
+		}
+
+		.swiper-pagination-total {
+			font-weight: 500;
+		}
+	}
+}
+
+@import 'vendor/micromodal';

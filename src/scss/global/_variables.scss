@@ -1,0 +1,111 @@
+@use './mixins/basic' as *;
+@use 'sass:map';
+
+// если не импортируем всю сетку с _override
+
+// $grid-breakpoints: (
+// 	xs: 0,
+// 	sm: 375px,
+// 	md: 768px,
+// 	lg: 1440px,
+// );
+
+// // с учетом padding-x, т.е. + $gap  или  + 2 * $container-padding-x
+// $container-max-widths: (
+// 	sm: 100%,
+// 	md: 720px,
+// 	lg: 1320px,
+// );
+
+// // половина gap (gap = отступ между контентом col)
+// $container-padding-x: 12px;
+
+// @use 'breakpoints/containers' with (
+// 	$grid-breakpoints: $grid-breakpoints,
+// 	$container-max-widths: $container-max-widths,
+// 	$container-padding-x: $container-padding-x
+// );
+
+// @forward 'breakpoints/containers';
+// @forward 'breakpoints/breakpoints';
+
+:root {
+	--primary: #092efc;
+	--primary-white: rgba(255, 255, 255, 0.8);
+	--on-primary: #fff;
+	--primary-active: #0c46ba;
+	--on-primary-active: #fff;
+	--on-primary-container: var(--primary);
+	--on-primary-container-active: var(--primary-darker);
+	--primary-gradient: linear-gradient(180deg, var(--primary) -9.38%, var(--primary) 112.5%);
+	--primary-gradient-active: linear-gradient(180deg, var(--primary) -9.38%, #4181ff 112.5%);
+	--primary-darker: #0c46ba;
+	--primary-lighter: #1b87df;
+	--primary-lighter-active: #092efc;
+
+	--surface: #152161;
+	--on-surface: #fff;
+	--on-surface-active: #1b87df;
+	--surface-gradient: linear-gradient(180deg, #4050aa 0%, #0f1a58 100%);
+
+	--error: #f5333f;
+	--on-error-container: var(--error);
+
+	--white: #fff;
+	--black: #181818;
+	--gray-3: #828282;
+	--gray-4: #a1a1aa;
+	--gray-5: #bdbdbd;
+
+	--backgrounds-cards: #373951;
+
+	--border-radius-xs: 12px;
+	--border-radius-sm: 24px;
+	--border-radius-md: 26px;
+	--border-radius-lg: 34px;
+}
+
+$g-primary: #092efc;
+$g-error: #f5333f;
+
+// replace pattern
+// font-size: (\d+)px;
+// font-size: toRem($1);
+@mixin font-atyp-display($weight: regular) {
+	font-family: 'AtypDisplay', sans-serif;
+	@if ($weight == regular) {
+		font-weight: 400;
+	} @else if ($weight == semibold) {
+		font-weight: 500;
+	} @else if ($weight == bold) {
+		font-weight: 700;
+	} @else {
+		font-weight: $weight;
+	}
+}
+
+@mixin font-atyp-text($weight: regular) {
+	font-family: 'AtypText', sans-serif;
+	@if ($weight == regular) {
+		font-weight: 400;
+	} @else if ($weight == semibold) {
+		font-weight: 600;
+	} @else if ($weight == medium) {
+		font-weight: 500;
+	} @else {
+		font-weight: $weight;
+	}
+}
+
+@mixin font-inter($weight: regular) {
+	font-family: 'Inter', sans-serif;
+	@if ($weight == regular) {
+		font-weight: 400;
+	} @else if ($weight == semibold) {
+		font-weight: 600;
+	} @else if ($weight == bold) {
+		font-weight: 700;
+	} @else {
+		font-weight: $weight;
+	}
+}

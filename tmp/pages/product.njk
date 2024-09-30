@@ -1,0 +1,83 @@
+{%- set pageTitle = 'EN-SAFETY SUITE' -%}
+{%- from 'tmp/html/head.njk' import head %}
+{{- head(pageTitle, "page-product") }}
+
+{% include "tmp/html/header.njk" %}
+<main class="main-container section">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-10">
+				<h2>
+							О программном комплексе
+						</h2>
+				<p>
+				EN-Safety Suite – программный комплекс для настройки аппаратной конфигурации, создания прикладных программ на языках соответствующих стандарту МЭК 61131-3, диагностики, сбора, хранения и предоставления информации о событиях регистрируемых аппаратной платформой ESP3400. 
+				<br>
+					<br>
+				Программа имеет возможность интеграции переменных проекта EN-Safety Suite в проект EN-Soft Process Control из состава программно-аппаратной платформой ENSMAS Process Control.
+				</p>
+				<h3>Компоненты</h3>
+				<p>Состоит из трёх основных компонентов</p>
+				<div class="components row">
+					<div class="col-xl-4">
+						<h4 class="text-primary">EN-SafetyPRG</h4>
+						<p>Позволяет создавать, сохранять, редактировать, загружать аппаратную конфигурацию и прикладные программы в  аппаратную платформу ESP3400. Также имеются средства отладки и средства организации контроля целостности, а также средства защиты проекта от несанкционированного доступа.</p>
+					</div>
+					<div class="col-xl-4">
+						<h4 class="text-primary">EN-SmartDX</h4>
+						<p>Позволяет производить диагностику путём считывания диагностической информации аппаратной платформы ESP3400 и формирования отчёта в удобной для оператора форме.</p>
+					</div>
+					<div class="col-xl-4">
+						<h4 class="text-primary">EN-SmartSOE</h4>
+						<p>Программа для сбора, хранения и предоставления информации о событиях, регистрируемых аппаратной платформы ESP3400. Встроенный редактор отчётов позволяет настраивать форму предоставления информации.</p>
+					</div>
+				</div>
+
+				<h3>Характеристики</h3>
+				<p>Минимальные характеристики ЭВМ на Windows</p>
+
+			</div>
+			<div>
+				<div class="specs-table-wrap surface surface-flat">
+					<div class="specs-table">
+						<div class="item">
+							<span>Windows 7 и Windows 10</span>
+							<small>ОС</small>
+						</div>
+						<div class="item">
+							<span>C++</span>
+							<small>Язык</small>
+						</div>
+						<div class="item">
+							<span>Intel Pentium G5400 3.7&nbsp;ГГц</span>
+							<small>ЦПУ</small>
+						</div>
+						<div class="item">
+							<span>50 Мб</span>
+							<small>Объём программы</small>
+						</div>
+						<div class="item">
+							<span>Память 2 Гб</span>
+							<small>ГПУ</small>
+						</div>
+						<div class="item">
+							<span>2023 год</span>
+							<small>Год создания программы</small>
+						</div>
+						<div class="item">
+							<span>8 ГБ DDR4</span>
+							<small>ОЗУ</small>
+						</div>
+
+						<div class="item">
+							<span>2024 год</span>
+							<small>Дата публикации</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+{% include "tmp/html/footer.njk" %}

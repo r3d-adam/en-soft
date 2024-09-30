@@ -1,0 +1,50 @@
+{%- from "@@html/components/mixins/svgicon.njk" import icon -%}
+<!-- hero  -->
+<section class="hero">
+	<div class="hero-slider swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide slide">
+				<div class="img-wrap"><img class="slide-img" src="@img/hero-slider/1.jpg" alt="" draggable="false"></div>
+				<div class="container align-content-center">
+					<div class="content col-lg-7 col-md-10"  data-swiper-parallax="50%">
+						<div class="heading">EN-SOFT</div>
+		
+							Текст-рыба получите доступ к встроенным продуктам для настройки аппаратной конфигурации и
+							создания
+							прикладных программ
+		
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide slide">
+				<div class="img-wrap"><img class="slide-img" src="https://placehold.co/1200x700" alt="" draggable="false"></div>
+				<div class="container align-content-center">
+					<div class="content col-lg-7 col-md-10"  data-swiper-parallax="50%">
+						<div class="heading">EN-SOFT</div>
+		
+							Текст-рыба получите доступ к встроенным продуктам для настройки аппаратной конфигурации и
+							создания
+							прикладных программ
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container swiper-nav-wrap">
+			<div class="swiper-nav">
+				<div class="swiper-button-next">	&larr;</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev">	&rarr;</div>
+			</div>
+		</div>
+	</div>
+	<a class="link-down" href="#about">
+		
+		О нас
+		<i class="down">
+			{{icon({name:"arrow-down", stroke: true})}}
+		</i>
+	</a>
+	<!-- END hero-slider -->
+</section>
+<!-- END hero  -->

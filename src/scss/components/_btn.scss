@@ -1,0 +1,116 @@
+@use 'global' as *;
+@use 'sass:color';
+
+.btn {
+	display: inline-block;
+	border-radius: 12px;
+	padding: 8px 28px 11px;
+	min-height: 48px;
+	max-height: 100%;
+	max-width: 100%;
+	background: var(--primary);
+	color: var(--on-primary);
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	@include font-atyp-display(semibold);
+	line-height: 23px;
+	border: none;
+	transition: background 0.3s ease;
+	letter-spacing: 0.64px;
+
+	&:disabled {
+		opacity: 0.7;
+	}
+
+	&:has(.icon) {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.icon {
+		max-width: 20px;
+		max-height: 20px;
+		margin-left: 9px;
+	}
+
+	.icon-chip {
+		height: 18px;
+		width: 18px;
+		margin-top: 3px;
+	}
+
+	.icon-tr-arrow {
+		width: 13px;
+		height: 13px;
+		margin-top: 3px;
+	}
+
+	.icon-eye {
+		margin-top: 3px;
+	}
+
+	&:hover,
+	&:active {
+		background: var(--primary-active);
+		color: var(--on-primary-active);
+	}
+
+	&-muted {
+		@include font-atyp-display(semibold);
+		padding: 7px 14px 11px;
+		background: rgba(157, 157, 157, 0.3);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+
+		&:hover,
+		&:active {
+			background: var(--white);
+			color: var(--on-primary-container);
+
+			.icon {
+				filter: invert(11%) sepia(99%) saturate(7394%) hue-rotate(240deg) brightness(96%)
+					contrast(106%);
+			}
+		}
+	}
+
+	&-primary {
+		background: var(--primary);
+		color: var(--on-primary);
+		transition: 0.3s ease background;
+		border-radius: 12px;
+		&:hover,
+		&:active {
+			background: var(--primary-active);
+			color: var(--on-primary-active);
+		}
+	}
+
+	&-secondary {
+		background: var(--primary-lighter);
+		color: var(--on-primary);
+		padding: 13px 36px;
+	}
+
+	&-primary-gradient {
+		// background: var(--primary-gradient);
+		position: relative;
+		background-image: var(--primary-gradient-active);
+		background-size: 100% 9999%;
+		transition: background-size 0.25s ease, background-position 0.25s ease;
+
+		&::after {
+			// background: var(--primary-gradient);
+			content: '';
+			height: 100%;
+		}
+
+		&:hover,
+		&:active {
+			background-size: 100% 100%;
+			background-image: var(--primary-gradient-active);
+			background-position: center center;
+		}
+	}
+}

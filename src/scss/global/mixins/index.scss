@@ -1,0 +1,25 @@
+// неплохой набор: https://github.com/W3cplus/SassMagic/blob/master/src/mixins
+
+@use 'flexbox-grid-mixins';
+/* 
+$default-grid-gutter: 2%;
+
+.grid {
+  @include flexbox-grid-mixins.grid($gutter: $default-grid-gutter);
+
+  > .grid__col-3 {
+    @include flexbox-grid-mixins.grid-col($col: 3, $gutter: $default-grid-gutter);
+  }
+  > .grid__col-9 {
+    @include flexbox-grid-mixins.grid-col($col: 9, $gutter: $default-grid-gutter);
+  }
+}
+*/
+@use 'basic';
+
+
+
+
+
+@forward 'flexbox-grid-mixins';
+@forward 'basic';

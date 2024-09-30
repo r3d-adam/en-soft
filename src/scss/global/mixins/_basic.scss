@@ -1,0 +1,343 @@
+@use 'flexbox-grid-mixins' as fg;
+@use 'sass:math';
+@use '../breakpoints/_breakpoints.scss' as b;
+
+/* -------------------------------------------------------------------------- */
+/*                                    FLEX                                    */
+/* -------------------------------------------------------------------------- */
+
+/// flex nowrap контейнер (для одинаковых колонок)
+/// @param {Number} $gutter [0] - ставим как у колонок
+/// @output -
+@mixin flex-same-row($gutter: 0) {
+	@include fg.grid($gutter: $gutter, $flex-wrap: nowrap);
+}
+
+/// равные колонки в nowrap flex контейнере
+/// @param {Number} $gutter [0] - ставим как у контейнера
+/// @output -
+@mixin flex-same-col($gutter: 0) {
+	@include fg.grid-col($gutter: $gutter, $flex-grow: 1, $flex-shrink: 1, $flex-basis: 0);
+	// flex: 1 1 0;
+}
+
+/// flex контейнер
+/// @param {Number} $gutter [0] - ставим как у колонок
+/// @param {String} $wrap [wrap] -
+/// @output -
+@mixin flex-grid($gutter: 0, $wrap: wrap) {
+	@include fg.grid($gutter: $gutter, $flex-wrap: $wrap);
+}
+
+/// делает колонку размером $col/12 (как bootstrap)
+/// @param {Number} $col -
+/// @param {Number} $gutter [0] - ставим как у контейнера
+/// @param {Number} $offset [null] - скорее расширение, а не отступ
+/// @output -
+@mixin flex-col($col, $gutter: 0, $offset: null) {
+	@include fg.grid-col($col: $col, $gutter: $gutter, $col-offset: $offset);
+}
+
+/// flex element статичная ширина
+/// @param {String} $width -
+/// @output -
+@mixin flex-static($width) {
+	flex: 0 0 auto;
+	width: $width;
+}
+
+/// flex element расширяется ширина, но не сужается
+/// @param {String} $width -
+/// @output -
+@mixin flex-min($width) {
+	flex: 1 0 auto;
+	width: $width;
+}
+
+/// flex element колонки одинаковой ширины
+/// @param {String} $width -
+/// @output -
+@mixin flex-equal() {
+	flex: 1 1 0%;
+	width: auto;
+}
+
+/// flex element сброс на дефолтное поведение, не расширяется, ширина по контенту, сужение
+/// @param {String} $width -
+/// @output -
+@mixin flex-default() {
+	/* flex: 0 1 auto; */
+	flex: initial;
+	width: auto;
+}
+
+/// отступ margin на x/12
+/// @param {Number} $columns -
+/// @param {Number} $grid-columns [12] -
+/// @output -
+@mixin col-offset($columns, $grid-columns: 12) {
+	margin-left: math.percentage($columns / $grid-columns);
+}
+
+@mixin col-push($columns, $grid-columns: 12) {
+	left: math.percentage($columns / $grid-columns);
+}
+
+@mixin col-pull($columns, $grid-columns: 12) {
+	right: math.percentage($columns / $grid-columns);
+}
+
+/* -------------------------------- END FLEX -------------------------------- */
+@mixin padding-x($value) {
+	padding-left: $value;
+	padding-right: $value;
+}
+
+@mixin padding-y($value) {
+	padding-top: $value;
+	padding-bottom: $value;
+}
+
+@mixin margin-x($value) {
+	margin-left: $value;
+	margin-right: $value;
+}
+
+@mixin margin-y($value) {
+	margin-top: $value;
+	margin-bottom: $value;
+}
+/// оверлей - перекрытие, контент желательно оборачивать в .inner и ставить pos:r (иначе оверлей будет перекрывать контент)
+/// @param {Color} $bgc [#000] -
+/// @param {Number} $opacity [0.5] -
+/// @output -
+@mixin overlay($bgc: #000, $opacity: 0.5) {
+	&:after {
+		position: absolute;
+		content: '';
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		background-color: $bgc;
+		@if ($opacity < 1) {
+			opacity: $opacity;
+		}
+		z-index: 0;
+		@content;
+	}
+}
+/// выравнивание дочернего элемента (flex)
+/// @param {String} $justify [center] -
+/// @param {String} $align [center] -
+/// @output -
+@mixin box-center($justify: center, $align: center) {
+	display: flex;
+
+	@if ($align !=false) {
+		align-items: $align;
+	}
+	@if ($justify !=false) {
+		justify-content: $justify;
+	}
+}
+
+/// выравнивание через absolute и translate
+/// @param {String} $direction [both] - 水平垂直,其它值`horizontal`和`vertical`
+/// @example
+/// //SCSS
+/// .center{
+///   @include center-translate;
+/// }
+/// //CSS
+/// .center {
+///   position: absolute;
+///   top: 50%;
+///   left: 50%;
+///   transform: translate3d(-50%, -50%, 0);
+/// }
+@mixin center-translate($direction: both) {
+	position: absolute;
+	@if $direction == both {
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+	} @else if $direction == horizontal {
+		left: 50%;
+		transform: translate3d(-50%, 0, 0);
+	} @else if $direction == vertical {
+		top: 50%;
+		transform: translate3d(0, -50%, 0);
+	}
+}
+
+/// стили для плейсхолдера
+/// @content
+/// @output
+@mixin placeholder {
+	\::-webkit-input-placeholder {
+		@content;
+	}
+	\:-moz-placeholder {
+		@content;
+	}
+	\::-moz-placeholder {
+		@content;
+	}
+	\:-ms-input-placeholder {
+		@content;
+	}
+}
+/// вертикальное выравнивание через псевдо элемент
+@mixin ghost-v-align($pseudo: before, $w: false) {
+	&:#{$pseudo} {
+		@if $w == true {
+			$w: 0.1px;
+		}
+
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+		font-size: 0;
+
+		@if $w {
+			width: $w;
+		}
+	}
+}
+/// Stroke font-character (обводка шрифта)
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+	$shadow: ();
+	$from: $stroke * -1;
+
+	@for $i from $from through $stroke {
+		@for $j from $from through $stroke {
+			$shadow: append($shadow, ($i * 1px) ($j * 1px) 0 $color, comma);
+		}
+	}
+
+	@return $shadow;
+}
+/// Stroke  (обводка шрифта)
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+	text-shadow: stroke($stroke, $color);
+}
+/// сброс стилей кнопки
+/// @output
+@mixin reset-button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+}
+/// сброс стилей списка
+/// @output
+@mixin reset-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	> li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/// convert px to rem
+/// @param {Integer} $value - px
+/// @return {String} - rem
+@function toRem($value, $defaultFontSize: 16) {
+	$remValue: math.div($value, $defaultFontSize) + rem;
+	@return $remValue;
+}
+
+/// convert px to rem
+/// @param {String} $property - property
+/// @param {Integer} $value - px
+/// @output -
+@mixin toRem($property, $value, $defaultFontSize: 16) {
+	#{$property}: math.div($value, $defaultFontSize) + rem;
+}
+
+@mixin show-mq($breakpoints: $grid-breakpoints) {
+	&::after {
+		position: fixed;
+		content: '';
+		display: block;
+		box-sizing: border-box;
+		width: 50px;
+		margin-right: 20px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 20px;
+		padding: 0;
+		text-align: center;
+		background: #000;
+		color: #fff;
+		right: 0;
+		top: 0;
+		z-index: 9999999;
+
+		@each $breakpoint, $name in $breakpoints {
+			// @debug $breakpoint;
+			// @debug $breakpoint;
+			@debug $name;
+			@include b.media-breakpoint-up($breakpoint, $breakpoints) {
+				content: '#{$breakpoint}';
+			}
+		}
+	}
+}
+
+@mixin link-active() {
+	&:hover,
+	&:focus,
+	&:active {
+		@content;
+	}
+}
+
+// Функция для преобразования из CamelCase в kebab-case
+@function camel2kebab($string) {
+	$kebab: '';
+	$length: str-length($string);
+
+	@for $i from 1 through $length {
+		$char: str-slice($string, $i, $i);
+
+		// Если символ — заглавная буква, добавляем тире перед ним
+		@if to-lower-case($char) != $char {
+			$kebab: '#{$kebab}-#{to-lower-case($char)}';
+		} @else {
+			$kebab: '#{$kebab}#{$char}';
+		}
+	}
+
+	// Удаляем ведущий тире, если он есть
+	@if str-slice($kebab, 1, 1) == '-' {
+		$kebab: str-slice($kebab, 2);
+	}
+
+	@return $kebab;
+}
+
+@mixin input-styles {
+	input[type='text'],
+	input[type='email'],
+	input[type='password'],
+	input[type='number'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='url'] {
+		@content;
+	}
+}

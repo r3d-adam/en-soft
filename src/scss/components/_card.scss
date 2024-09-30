@@ -1,0 +1,63 @@
+@use 'global' as *;
+@use 'global/bootstrap' as *;
+@use 'sass:math';
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--border-radius-sm);
+	background-color: var(--backgrounds-cards);
+	overflow: hidden;
+	height: 100%;
+	width: 416px;
+	max-width: 100%;
+	margin-inline: auto;
+
+	.img-wrap {
+		position: absolute;
+		width: 100%;
+		aspect-ratio: 416 / 275;
+	}
+
+	img {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+	}
+
+	.info {
+		position: relative;
+		flex-grow: 1;
+		background-color: var(--backgrounds-cards);
+		border-radius: var(--border-radius-sm);
+		padding: 24px;
+		display: flex;
+		flex-direction: column;
+		margin-top: math.percentage(math.div(200, 416));
+
+		@include media-breakpoint-only(xs, $breakpoints: $grid-breakpoints) {
+			margin-top: math.percentage(math.div(236, 416));
+		}
+	}
+	.title {
+		font-size: 24px;
+		@include font-atyp-text(600);
+		line-height: 1.2;
+		margin-top: 20px;
+		color: var(--on-surface);
+	}
+
+	.description {
+		text-wrap: pretty;
+		margin: 16px 0 32px;
+		line-height: 1.3;
+		letter-spacing: 0.8px;
+		color: var(--primary-white);
+	}
+
+	.btn {
+		width: fit-content;
+		margin-top: auto;
+	}
+}

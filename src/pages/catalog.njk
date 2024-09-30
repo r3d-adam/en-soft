@@ -1,0 +1,29 @@
+{%- from "@@html/components/card.njk" import Card -%}
+{%- set pageTitle = 'ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ' -%}
+{%- from '@@html/head.njk' import head %}
+{{- head(pageTitle, 'page-catalog') }}
+
+{% include "@@html/header.njk" %}
+<main class="main-container section">
+	<div class="container">
+		<div class="cards row">
+			{%- for product in products.slice(0,6) %}
+				<div class="col-md-6 col-lg-4">
+					{{- Card(product) }}
+				</div>
+			{%- endfor %}
+		</div>
+		<nav>
+			<ul class="pagination justify-content-center">
+				<li class="page-item active" aria-current="page">
+					<a class="page-link" href="#">1</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">2</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</main>
+
+{% include "@@html/footer.njk" %}

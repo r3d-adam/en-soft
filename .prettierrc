@@ -1,0 +1,14 @@
+{
+	"useTabs": true,
+	"tabWidth": 4,
+	"arrow-body-style": "warn",
+	"prefer-arrow-callback": "off",
+	"printWidth": 100,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"bracketSpacing": true,
+	"jsxBracketSameLine": false,
+	"semi": true,
+
+	"quoteProps": "consistent"
+}

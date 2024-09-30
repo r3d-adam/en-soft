@@ -1,0 +1,56 @@
+{%- set pageTitle = 'Контакты' -%}
+{%- from '@@html/head.njk' import head %}
+{{- head(pageTitle, "page-contacts") }}
+{%- include "@@html/header.njk" %}
+<main class="main-container section">
+	<div class="container">
+		<div class="contact-cards row">
+			<div class="col-md-6 col-lg-5 my-3">
+				<div class="surface contact-info cta-box">
+					<div class="content-col">
+						<div class="title">Москва</div>
+						<dl>
+							<dt>Адрес</dt>
+							<dd>
+								<address class="data">Улица Автозаводская, дом 23&nbsp;А, К2</address>
+							</dd>
+							<dt>Телефон</dt>
+							<dd class="phone-list">
+								{%- set tel1 = "+7 (495) 540-61-41" -%}
+								{%- set tel2 = "+7 (800) 222-61-41" -%}
+								<a href="tel:{{ tel1 | phone }}">{{tel1}}</a>
+								<a href="tel:{{ tel2 | phone }}">{{tel2}}</a>
+							</dd>
+							<dt>E-mail</dt>
+							<dd>
+								<a href="mailto:info@chint.ru">info@chint.ru</a>
+							</dd>
+							<dt>Режим работы</dt>
+							<dd>
+								<span class="text-nowrap">Пн-Чт — 9:00-18:00<br>Пт — 9:00-17:00</span>
+							</dd>
+						</dl>
+					</div>
+					<div class="col img-col">
+						<img src="/@img/contact-details.png" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-7 my-3">
+				<div class="surface requisites">
+					<div class="title">Реквизиты</div>
+					<span class="mt-auto me-auto">
+							ООО: &laquo;Чинт Электрик&raquo;<br>
+							ИНН: 772666268<br>
+							КПП: 772501001<br>
+							ОГРН: 1107746822700<br>
+							Юр. адрес: 115280, Россия, г. Москва, вн.тер.г. муниципальный округ Даниловский, Автозаводская&nbsp;ул., д. 23А, к.&nbsp;2, офис 701
+						</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</main>
+
+{% include "@@html/footer.njk" %}

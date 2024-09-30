@@ -1,0 +1,78 @@
+{%- set pageTitle = 'Заказать' -%}
+{%- from 'tmp/html/head.njk' import head %}
+{{- head(pageTitle, "page-order") }}
+
+{% include "tmp/html/header.njk" %}
+<main class="main-container section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<form>
+					<div class="mb-3">
+						<div class="form-floating">
+							<input id="input_name" type="text" name="name" class="form-control" placeholder="Имя"  autocomplete="name" required>
+							<label for="input_name">Имя</label>
+						</div>
+						<div class="form-floating">
+							<input id="input_phone" type="tel" name="phone" class="form-control" placeholder="Телефон" autocomplete="tel" required>
+							<label for="input_phone" >Телефон</label>
+						</div>
+						<div class="form-floating">
+							<input id="input_email" type="email" name="email" class="form-control" placeholder="Enail" autocomplete="email" required>
+							<label for="input_email" >Email</label>
+						</div>
+						<div class="form-floating mb-4">
+							<input id="input_company" type="text" name="company" class="form-control" placeholder="Компания" required>
+							<label for="input_company">Компания</label>
+						</div>
+						<div class="form-floating">
+
+							<select
+										class="form-select"
+										name="product"
+									>
+								<option selected disabled>Продукт</option>
+
+								{% for product in products %}
+									<option value="{{- product.name }}">{{- product.name }}</option>
+								{% endfor %}
+
+							</select>
+						</div>
+
+						<div>
+							<label for="input_question" class="form-label">Поле для вопроса</label>
+							<textarea class="form-control" id="input_question" name="question" rows="5" placeholder="Введите вопрос"></textarea>
+						</div>
+
+						<div class="row form-bottom">
+							<div class="status-label">
+								<div class="error">Для отправки данных необходимо заполнить все поля</div>
+								<div class="success">Данные успешно отправлены</div>
+							</div>
+							<div class="col-auto">
+								<button class="btn btn-primary">Отправить</button>
+							</div>
+							<div class="policy-col col-xl">
+										Нажимая кнопку «Отправить», вы соглашаетесь
+										<br>
+								<span>с <a href="#">Политикой конфиденциальности</a>
+								</span>
+								<span>и <a href="#">Пользовательским соглашением</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="d-none d-md-block col-md-7">
+				<div class="img-wrap ms-md-2 text-end">
+					<img class="img-fluid rounded-3" src="/@img/order.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+{% include "tmp/html/footer.njk" %}

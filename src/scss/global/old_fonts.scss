@@ -1,0 +1,37 @@
+@font-face {
+	font-family: 'Bahnschrift';
+	font-display: swap;
+	src: url('../fonts/Bahnschrift.woff2') format('woff2'),
+		url('../fonts/Bahnschrift.woff') format('woff');
+	font-style: normal;
+	font-stretch: normal;
+}
+// @font-face {
+// 	// font-family: 'Bahnschrift-Light';
+// 	font-display: swap;
+// 	font-family: Bahnschrift;
+// 	src: url('../fonts/Bahnschrift.woff2') format('woff2'),
+// 		url('../fonts/Bahnschrift.woff') format('woff');
+// 	font-weight: 300;
+// }
+@font-face {
+	font-family: 'BlackDiamond';
+	font-display: swap;
+	src: url('../fonts/BlackDiamond.woff2') format('woff2'),
+		url('../fonts/BlackDiamond.woff') format('woff');
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-display: swap;
+	src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
+		url('../fonts/Montserrat-Medium.woff') format('woff');
+	font-weight: 500;
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-display: swap;
+	src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+		url('../fonts/Montserrat-Regular.woff') format('woff');
+	font-weight: 400;
+}

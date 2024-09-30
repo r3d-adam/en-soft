@@ -1,0 +1,28 @@
+<!-- recommended  -->
+{%- from "@@html/components/mixins/svgicon.njk" import icon -%}
+{%- from "@@html/components/card.njk" import Card -%}
+<section id="recommended" class="recommended section surface">
+	<div class="container">
+		<div class="d-sm-flex mb-5 align-content-center">
+			<h2 class="mb-sm-0 mb-5 mt-2">РЕКОМЕНДУЕМ</h2>
+			<a href="#" class="btn btn-muted btn-show-more ms-sm-auto">
+					Посмотреть все
+					{{ icon({name: 'eye'})}}
+
+			</a>
+		</div>
+
+		<div class="cards row">
+			{%- for product in products %}
+				{%- set hiddenClass = "" %}
+				{% if loop.index > 3 %}
+					{%- set hiddenClass = " d-none" %}
+				{% endif %}
+				<div class="col-md-6 col-lg-4 {{- hiddenClass }}">
+					{{- Card(product) }}
+				</div>
+			{%- endfor %}
+		</div>
+	</div>
+</section>
+<!-- END recommended  -->

@@ -1,0 +1,30 @@
+@use 'normalize'; //'reboot'; // or normalize
+@use 'fonts';
+@use 'vendors';
+// @use 'breakpoints/breakpoints';
+// @use 'override';
+@use 'bootstrap';
+
+@use 'global-styles';
+@use 'variables';
+// @use 'helpers'; // если не используем bootstrap (класс .container)
+@use 'mixins';
+
+/* -------------------------------------------------------------------------- */
+
+// export
+@forward 'normalize'; //'reboot'; // or normalize
+@forward 'fonts';
+@forward 'vendors';
+
+@forward 'bootstrap';
+
+// @forward 'override';
+
+// @forward 'breakpoints/breakpoints';
+
+// @forward 'helpers'; // если не используем bootstrap (класс .container)
+
+@forward 'global-styles';
+@forward 'variables';
+@forward 'mixins';

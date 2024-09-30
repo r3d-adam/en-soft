@@ -1,0 +1,16 @@
+{%- from "@@html/components/mixins/svgicon.njk" import icon -%}
+{%- macro Card(card) %}
+	<div class="card">
+		<div class="img-wrap">
+			<img src="{{ card.img }}" alt="{{ card.imgAlt }}">
+		</div>
+		<div class="info">
+			<div class="title">{{ card.name }}</div>
+			<div class="description">{{ card.description }}</div>
+			<a href="{{ card.link }}" class="btn btn-secondary">
+			Подробнее
+			{{- icon({name: 'tr-arrow', stroke: true}) }}
+			</a>
+		</div>
+	</div>
+{%- endmacro %}

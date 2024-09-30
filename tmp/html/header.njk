@@ -1,0 +1,90 @@
+{%- from "tmp/html/components/mixins/svgicon.njk" import icon -%}
+<header class="header">
+	<div class="header-menu-bar">
+		<div class="container">
+			<div class="d-flex">
+				<div class="logo-wrap col-auto">
+					<a class="logo" href="/">
+						{{icon({name: "logo"})}}
+					</a>
+				</div>
+				<div class="col-auto  ms-auto">
+					<a href="#" class="d-lg-none" id="burger">
+						<span></span>
+					</a>
+				</div>
+				<div class="header-nav-wrap col-auto">
+					<nav class="header-nav col-auto">
+						<ul class="header-menu">
+							<li>
+								<a href="/pages/catalog.html">Программное обеспечение</a>
+								<ul>
+									<li>
+										<a href="/pages/product.html">EN-Safety suite</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft Advance Alarm Managment</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft AMS</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft Batch</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft CHAMS</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft EPG DCG</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft Gaz Turbine Control</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft Process Control</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft Report Analysis</a>
+									</li>
+									<li>
+										<a href="/pages/product.html">EN-Soft SOE</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="/pages/about.html">О компании</a>
+							</li>
+							<li>
+								<a href="/pages/contacts.html">Контакты</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="col-auto ms-lg-auto">
+						<a class="btn btn-primary-gradient js-open-modal" href="#" data-micromodal-trigger="callback-modal">Заказать
+						{{icon({name: "chip"})}}
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if isHomePage == false or not isHomePage %}
+		<div class="header-bottom">
+			<div class="container">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="/">Главная</a>
+						</li>
+
+						<li class="breadcrumb-item active" aria-current="page">О компании</li>
+					</ol>
+				</nav>
+
+				<div class="header-title">{{ pageTitle }}</div>
+			</div>
+		</div>
+	{% endif %}
+</header>

@@ -1,0 +1,192 @@
+﻿/* _hero */
+@use 'global' as *;
+@use 'global/bootstrap' as *;
+
+// $header-height: 90px;
+
+// .main-container {
+// 	position: relative;
+// 	// padding-top: $header-height;
+// 	overflow: hidden;
+// }
+
+.hero {
+	position: relative;
+	overflow: hidden;
+	max-width: 100%;
+
+	border: {
+		bottom-left-radius: var(--border-radius-lg);
+		bottom-right-radius: var(--border-radius-lg);
+	}
+
+	.link-down {
+		display: block;
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 50%;
+		background: #fff;
+		padding-top: 9px;
+		$width: 146px;
+		width: $width;
+		margin-left: -$width / 2;
+		height: 48px;
+		border-radius: var(--border-radius-lg) var(--border-radius-lg) 0px 0px;
+		@include font-atyp-display(bold);
+		font-size: 14px;
+		line-height: 20px;
+		text-decoration: none;
+		color: #1f2650;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include link-active {
+			color: var(--on-primary-container-active);
+		}
+
+		.down {
+			display: block;
+			height: 7px;
+
+			animation-name: slideInDown;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-fill-mode: both;
+			animation-direction: alternate;
+		}
+
+		&:after,
+		&:before {
+			position: absolute;
+			display: block;
+			content: '';
+			width: 16px;
+			height: 16px;
+			bottom: 0;
+			background: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 16 16' id='corner' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 15.971V16h16V0h-.029C15.473 8.592 8.592 15.473 0 15.971Z' fill='%23fff'/%3E%3C/svg%3E");
+		}
+
+		&:before {
+			right: 100%;
+		}
+
+		&:after {
+			left: 100%;
+			transform: scaleX(-1);
+		}
+	}
+
+	&-slider {
+	}
+
+	.slide {
+		min-height: 100vh;
+		position: relative;
+		border-radius: 0px 0px 34px 34px;
+
+		.heading {
+			background-image: linear-gradient(to right, var(--white) 0%, #1a22d3 39%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-fill-color: transparent;
+			@include font-atyp-display(bold);
+			font-size: 56px;
+			line-height: 53px;
+			margin-bottom: 25px;
+			letter-spacing: 2px;
+		}
+
+		.container {
+			min-height: 100vh;
+			padding-top: 100px;
+			padding-bottom: 100px;
+
+			@include media-breakpoint-only(xs) {
+				padding-top: 150px;
+				padding-bottom: 150px;
+			}
+		}
+
+		.content {
+			position: relative;
+			padding: 120px 24px 24px;
+			border-radius: var(--border-radius-lg);
+			box-shadow: inset 0 3px 4px 1px rgba(0, 0, 0, 0.15);
+			background: linear-gradient(
+					312.56deg,
+					rgba(0, 0, 0, 0.3) 0%,
+					rgba(36, 84, 91, 0.3) 100%
+				),
+				rgba(25, 25, 61, 0.4);
+			box-shadow: inset 0px 3px 4px 1px rgba(0, 0, 0, 0.15);
+			backdrop-filter: blur(14px);
+			z-index: 2;
+			font-family: AtypDisplay;
+			@include font-atyp-display();
+			font-size: 24px;
+			line-height: 1.5;
+			color: var(--primary-white);
+			letter-spacing: 0.02em;
+
+			@include media-breakpoint-down(sm, $breakpoints: $grid-breakpoints) {
+				padding-top: 111px;
+				padding-bottom: 33px;
+			}
+
+			@include media-breakpoint-only(xs, $breakpoints: $grid-breakpoints) {
+				padding: 43px 24px 50px;
+
+				.heading {
+					font-size: 38px;
+					line-height: 1.2;
+					background-image: linear-gradient(90deg, #ffffff 0%, #1a22d3 83.5%);
+				}
+			}
+		}
+	}
+
+	.img-wrap {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		z-index: 0;
+
+		img {
+			display: block;
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.slide-img {
+		display: block;
+	}
+}
+
+@-webkit-keyframes slideInDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		visibility: visible;
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+@keyframes slideInDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		visibility: visible;
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}

@@ -1,0 +1,61 @@
+@use 'global' as *;
+@use 'global/bootstrap' as *;
+
+.callback {
+	.img-wrap {
+		overflow: hidden;
+
+		img {
+			border-radius: 40px;
+		}
+	}
+
+	.form-col {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h2,
+	.h2,
+	.title {
+		margin-bottom: 8px;
+	}
+
+	form {
+		margin-bottom: 64px;
+	}
+
+	.stats {
+		margin-bottom: -40px;
+
+		& > div {
+			max-width: 260px;
+			margin-bottom: 40px;
+		}
+	}
+
+	.item-number {
+		line-height: 1.36;
+		letter-spacing: -0.5px;
+		font-size: 28px;
+		@include font-inter(bold);
+		margin-bottom: 10px;
+	}
+	.item-description {
+		line-height: 1.63;
+		@include font-inter();
+		color: #4b5262;
+	}
+
+	.img-wrap {
+		@include media-breakpoint-down(md, $breakpoints: $grid-breakpoints) {
+			margin-bottom: 64px;
+		}
+		img {
+			max-width: 100%;
+			display: block;
+			margin-inline: auto;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{%- set isHomePage = true -%}
+{%- from 'tmp/html/head.njk' import head %}
+{{- head() }}
+
+{% include "tmp/html/header.njk" %}
+<main class="main-container">
+	{% include "tmp/html/components/hero.njk" %}
+	{% include "tmp/html/components/about.njk" %}
+	{% include "tmp/html/components/recommended.njk" %}
+	{% include "tmp/html/components/callback.njk" %}
+</main>
+{% include "tmp/html/footer.njk" %}

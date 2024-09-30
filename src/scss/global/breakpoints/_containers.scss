@@ -1,0 +1,40 @@
+$container-padding-x: 15px !default;
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
+) !default;
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1320px,
+) !default;
+
+@use 'breakpoints' as mq;
+
+@mixin container($padding-x: $container-padding-x) {
+	width: 100%;
+	padding-right: $padding-x;
+	padding-left: $padding-x;
+	margin-right: auto;
+	margin-left: auto;
+
+	// @debug $container-max-widths;
+	// Responsive containers that are 100% wide until a breakpoint
+	@each $breakpoint, $container-max-width in $container-max-widths {
+		// @debug $breakpoint;
+		// @debug $grid-breakpoints;
+		@include mq.media-breakpoint-up($breakpoint, $grid-breakpoints) {
+			// %responsive-container-#{$breakpoint} {
+			max-width: $container-max-width;
+			// }
+		}
+	}
+}
