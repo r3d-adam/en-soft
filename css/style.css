@@ -8352,7 +8352,7 @@ input:-webkit-autofill:active {
 
 .header .header-bottom {
   min-height: 320px;
-  background: url(./..g/header-bg.jpg) center center no-repeat;
+  background: url(/en-soft/img/header-bg.jpg) center center no-repeat;
   background-size: cover;
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   color: var(--on-surface);
