@@ -96,7 +96,7 @@ export default function forms() {
 				return;
 			}
 
-			fetch('fake-mail.php', {
+			fetch('/files/fake-mail.php', {
 				body: formData,
 				method: 'POST',
 			})
