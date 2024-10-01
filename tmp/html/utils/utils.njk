@@ -1,4 +1,0 @@
-{% macro filterPhone(phone = '') %}
-	{%-set newPhone = phone | replace(' ', "") | replace('(', "") | replace(')', "") | replace('-', "") | trim %}
-	{{-newPhone-}}
-{% endmacro %}
